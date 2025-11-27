@@ -8,7 +8,7 @@
     <link href="stylesheets/output.css" rel="stylesheet">
     <title>Create - Blog</title>
 </head>
-<body class="w-screen overflow-x-hidden bg-gray-100 min-h-screen">
+<body class="w-screen overflow-x-hidden bg-gray-100 min-h-screen flex flex-col">
 <?php
 require_once 'components/header.php';
 require_once 'components/functions.php';
@@ -20,39 +20,43 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 <form action="contact.php" method="post" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-xl space-y-4">
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
         <input
                 type="text"
                 name="name"
+                id="name"
                 placeholder="Enter your name"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
         <input
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Enter your email"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
         <input
                 type="text"
                 name="subject"
+                id="subject"
                 placeholder="Subject"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
         <textarea
                 name="message"
+                id="message"
                 rows="6"
                 placeholder="Write your message here..."
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -66,6 +70,10 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
         Send Message
     </button>
 </form>
+
+<?php
+include_once 'components/footer.php';
+?>
 
 
 </body>

@@ -8,7 +8,7 @@
     <link href="stylesheets/output.css" rel="stylesheet">
     <title>Detail - Blog</title>
 </head>
-<body class="w-screen overflow-x-hidden bg-gray-100 min-h-screen">
+<body class="w-screen overflow-x-hidden bg-gray-100 min-h-screen flex flex-col">
 <?php
 require_once 'components/header.php';
 require_once 'components/functions.php';
@@ -23,17 +23,22 @@ if (isset($_GET['id'])) {
 
 <div class="max-w-3xl mx-auto mt-10 p-8 bg-white shadow-md rounded-xl">
     <h1 class="text-3xl font-bold text-gray-900 mb-4">
-        <?= $post['title'] ?>
+        <?= htmlspecialchars($post['title']) ?>
     </h1>
 
     <p class="text-sm text-gray-500 mb-6">
-        By: <span class="font-medium text-gray-700"><?= $post['author']['userName'] ?></span>
+        By: <span class="font-medium text-gray-700"><?= htmlspecialchars($post['author']['userName']) ?></span>
     </p>
 
     <div class="prose max-w-none text-gray-800">
-        <?= $post['content'] ?>
+        <?= htmlspecialchars($post['content']) ?>
     </div>
 </div>
+
+
+<?php
+include_once 'components/footer.php';
+?>
 
 
 </body>
