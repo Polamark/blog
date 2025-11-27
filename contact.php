@@ -18,7 +18,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 }
 ?>
 
-<form action="contact.php" method="post" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-xl space-y-4">
+<form action="contact.php" method="post" class="max-w-3xl w-full mx-auto p-6 bg-white shadow-md rounded-xl space-y-4">
     <div>
         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
         <input
