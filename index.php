@@ -18,11 +18,13 @@ init();?>
 
 <section class="w-screen h-fit px-10 flex flex-wrap justify-center">
     <?php foreach ($_SESSION['posts'] as $post): ?>
-        <article class="flex flex-col flex-1 bg-white shadow-lg rounded-lg p-10 m-5 max-w-100 transition-all duration-300 hover:shadow-xl hover:scale-105">
-            <h2 class="text-4xl font-semibold"><?=$post["title"]?></h2>
-            <h3>By: <span class="font-semibold"> <?=$post["author"]["userName"]?></span></h3>
-            <p class="truncate mt-4 line-clamp-3 whitespace-break-spaces leading-4.5"><?=$post["content"]?></p>
-        </article>
+        <a href="detail.php?id=<?=$post["id"]?>">
+            <article class="flex flex-col flex-1 bg-white shadow-lg rounded-lg p-10 m-5 max-w-100 transition-all duration-300 hover:shadow-xl hover:scale-105">
+                <h2 class="text-4xl font-semibold"><?=$post["title"]?></h2>
+                <h3>By: <span class="font-semibold"> <?=$post["author"]["userName"]?></span></h3>
+                <p class="truncate mt-4 line-clamp-3 whitespace-break-spaces leading-4.5"><?=$post["content"]?></p>
+            </article>
+        </a>
     <?php endforeach;?>
 </section>
 </body>

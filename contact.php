@@ -8,42 +8,65 @@
     <link href="stylesheets/output.css" rel="stylesheet">
     <title>Create - Blog</title>
 </head>
-<body>
+<body class="w-screen overflow-x-hidden bg-gray-100 min-h-screen">
 <?php
 require_once 'components/header.php';
 require_once 'components/functions.php';
 init();
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
+    print_r($_POST);
+}
 ?>
 
 <form action="contact.php" method="post" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-xl space-y-4">
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
         <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Content</label>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        >
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+        <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        >
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
         <textarea
-            name="content"
-            cols="30"
-            rows="10"
-            placeholder="Content"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                name="message"
+                rows="6"
+                placeholder="Write your message here..."
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         ></textarea>
     </div>
 
     <button
-        type="submit"
-        class="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+            type="submit"
+            class="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
     >
-        Submit
+        Send Message
     </button>
 </form>
+
 
 </body>
 </html>
