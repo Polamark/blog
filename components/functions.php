@@ -1,12 +1,13 @@
 <?php
 
+/** @var array $authors */
 $authors = [
     1 => [
         'userName' => 'American guy',
         'password' => 'abc123',
     ],
 ];
-
+/** @var array $posts */
 $posts = [
     1 => [
         'id' => 1,
@@ -22,6 +23,11 @@ $posts = [
     ],
 ];
 
+/**
+ * Initializes the session
+ *
+ * @return void
+ */
 function init() {
     global $posts;
     global $authors;
@@ -35,12 +41,14 @@ function init() {
     }
 }
 
+/**
+ * Adds a post to the posts-array
+ *
+ * @param array $post passes the post-data
+ * @return void
+ */
 function addPost($post) {
     global $posts;
     $posts[] = $post;
     $_SESSION['posts'] = $posts;
-}
-
-function getPosts() {
-    return $_SESSION['posts'];
 }

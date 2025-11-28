@@ -16,11 +16,16 @@ init();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Trim all inputs
+    /** @var string $name */
     $name    = trim($_POST['name']    ?? '');
+    /** @var string $email */
     $email   = trim($_POST['email']   ?? '');
+    /** @var string $subject */
     $subject = trim($_POST['subject'] ?? '');
+    /** @var string $message */
     $message = trim($_POST['message'] ?? '');
 
+    /** @var string[] $errors */
     $errors = [];
 
     // Validate name
