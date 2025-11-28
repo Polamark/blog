@@ -16,7 +16,7 @@ global $posts;
 global $authors;
 init();?>
 
-<section class="w-screen h-fit px-10 flex flex-wrap justify-center">
+<section class="w-screen h-fit px-10 mb-10 flex flex-wrap justify-center">
     <?php foreach ($_SESSION['posts'] as $post): ?>
         <a href="detail.php?id=<?=$post["id"]?>">
             <article class="flex flex-col flex-1 bg-white shadow-lg rounded-lg p-10 m-5 max-w-100 transition-all duration-300 hover:shadow-xl hover:scale-105">

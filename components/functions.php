@@ -19,7 +19,7 @@ $posts = [
         'title' => 'Second Post',
         'content' => 'Et amet ex et occaecat Lorem esse sit magna velit ea nostrud proident ea cupidatat. Non duis irure esse veniam eu pariatur eu minim enim laborum reprehenderit ea. Consectetur velit irure ullamco do ullamco consectetur dolore adipisicing dolor enim occaecat ea anim velit officia. Lorem pariatur veniam enim ad ex. Dolore cupidatat sint nostrud duis duis.',
         'author' => $authors[1],
-    ]
+    ],
 ];
 
 function init() {

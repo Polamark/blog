@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="max-w-3xl mx-auto mt-10 p-8 bg-white shadow-md rounded-xl">
+<div class="max-w-3xl mx-auto mb-10 mt-10 p-8 bg-white shadow-md rounded-xl">
     <h1 class="text-3xl font-bold text-gray-900 mb-4">
         <?= htmlspecialchars($post['title']) ?>
     </h1>
