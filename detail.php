@@ -16,6 +16,9 @@ init();
 global $posts;
 if (isset($_GET['id'])) {
     $post = $posts[$_GET['id']];
+    if (!$post) {
+        header('Location: index.php');
+    }
 } else {
     header('Location: index.php');
 }
