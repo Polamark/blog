@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /** @var string $message */
     $message = trim($_POST['message'] ?? '');
 
-    /** @var array<string> $errors */
+    /** @var string[] $errors */
     $errors = [];
 
     // Validate name
