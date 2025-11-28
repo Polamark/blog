@@ -14,7 +14,7 @@ require_once 'components/header.php';
 require_once 'components/functions.php';
 init();
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
-    print_r($_POST);
+    echo strip_tags(implode("<br>",$_POST), "<br>");
 }
 ?>
 
