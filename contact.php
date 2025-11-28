@@ -13,8 +13,54 @@
 require_once 'components/header.php';
 require_once 'components/functions.php';
 init();
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
-    echo strip_tags(implode("<br>",$_POST), "<br>");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Trim all inputs
+    $name    = trim($_POST['name']    ?? '');
+    $email   = trim($_POST['email']   ?? '');
+    $subject = trim($_POST['subject'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    $errors = [];
+
+    // Validate name
+    if ($name === '') {
+        $errors[] = "Name is required.";
+    }
+
+    // Validate email
+    if ($email === '') {
+        $errors[] = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
+    }
+
+    // Validate subject
+    if ($subject === '') {
+        $errors[] = "Subject is required.";
+    }
+
+    // Validate message
+    if ($message === '') {
+        $errors[] = "Message is required.";
+    }
+
+    // If errors exist, show them
+    if (!empty($errors)) {
+        foreach ($errors as $err) {
+            echo "<p style='color:red;'>$err</p>";
+        }
+    } else {
+        // Sanitize output (allow only <br>)
+        $cleanData = [
+                'name'    => strip_tags($name),
+                'email'   => strip_tags($email),
+                'subject' => strip_tags($subject),
+                'message' => nl2br(strip_tags($message))
+        ];
+
+        echo implode("<br>", $cleanData);
+    }
 }
 ?>
 
@@ -25,6 +71,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
                 type="text"
                 name="name"
                 id="name"
+                value="<?= $_POST['name'] ?? '' ?>"
                 placeholder="Enter your name"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
@@ -36,6 +83,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
                 type="email"
                 name="email"
                 id="email"
+                value="<?= $_POST['email'] ?? '' ?>"
                 placeholder="Enter your email"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
@@ -47,6 +95,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
                 type="text"
                 name="subject"
                 id="subject"
+                value="<?= $_POST['subject'] ?? '' ?>"
                 placeholder="Subject"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
@@ -60,7 +109,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
                 rows="6"
                 placeholder="Write your message here..."
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        ></textarea>
+        ><?= $_POST['message'] ?? '' ?></textarea>
     </div>
 
     <button
